@@ -1,0 +1,152 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-auto bg-light sticky-top">
+      <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+        <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
+          <li class="nav-item">
+            <a routerLink="/dashboard" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" routerLink="/dashboard" data-bs-original-title="Home">
+              <i class="bi-house fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/offres-stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard" >
+              <i class="bi bi-box-arrow-in-right fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ENCADRANT')">
+            <a routerLink="/stages" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders" data-bs-original-title="addMark">
+              <i class="bi bi-card-list fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ENCADRANT')">
+            <a routerLink="/session" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-calendar-date fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ADMIN')">
+            <a routerLink="/chart" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-clipboard2-data-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/projets" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-person-workspace fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/new-projet" class="nav-link py-3 px-3 text-bg-primary" style="color: grey;" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-plus-circle-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ADMIN')">
+            <a routerLink="/offre-de-stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-list-ul fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ADMIN')">
+            <a routerLink="/validate-offre" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-check-square-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('CHEF_FIL')">
+            <a routerLink="/affectation" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-arrow-left-right fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
+            <a routerLink="/docs" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-file-text-fill fs-3"></i>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown" >
+            <a class="nav-link dropdown-toggle bg-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="bi-people fs-3"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#" (click)="handleLogout()">Log out</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm p-3 min-vh-100">
+      <!--add-student content -->
+      <section class="vh-100">
+        <div class="container h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+              <div class="card text-black">
+                <div class="card-body p-md-5">
+                  <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Ajouter un projet</p>
+                      <!--input controls -->
+                      <form class="mx-1 mx-md-4" [formGroup]="newProjetFormGroup" (ngSubmit)="handleSaveCustomer()">
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input type="text" class="form-control" formControlName="intitule">
+                            <label class="form-label">Intitule</label>
+                            <span class="text-danger" *ngIf="newProjetFormGroup.controls['intitule'].errors && newProjetFormGroup.controls['intitule'].touched">Poste is required</span>
+                          </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <textarea type="text" class="form-control" formControlName="description"></textarea>
+                            <label class="form-label">Description</label>
+                            <span class="text-danger" *ngIf="newProjetFormGroup.controls['description'].touched && newProjetFormGroup.controls['description'].errors && newProjetFormGroup.controls['description'].errors['required']">Description is required</span>
+                          </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input type="text" class="form-control" formControlName="path"/>
+                            <label class="form-label">Lien GitHub</label>
+                            <span class="text-danger" *ngIf="newProjetFormGroup.controls['path'].touched && newProjetFormGroup.controls['path'].errors && newProjetFormGroup.controls['path'].errors['required']">Lien GitHub Debut is required</span>
+                          </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <select class="form-control" formControlName="stage">
+                              <option value="1">1ère année</option>
+                              <option value="2">2ème année</option>
+                              <option value="3">3ème année</option>
+                            </select>
+                            <label class="form-label">Stage</label>
+                            <span class="text-danger" *ngIf="newProjetFormGroup.controls['stage'].touched && newProjetFormGroup.controls['stage'].errors && newProjetFormGroup.controls['stage'].errors['required']">Date Fin is required</span>
+                          </div>
+                        </div>
+
+                        <!--buttons -->
+
+                        <div class="d-flex justify-content-end pt-3 text-center">
+                          <button type="button" class="btn btn-light btn-lg" (click)="OnResetedForm()">Reset</button>
+                          <button type="submit" [disabled]="!newProjetFormGroup.valid" class="btn btn-warning btn-lg ms-3">Ajouter</button>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="col-md-10 col-lg-6 col-xl-7 d-inline-block align-items-center order-1 order-lg-2">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                           class="img-fluid" alt="Sample image">
+                      <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </div>
+</div>

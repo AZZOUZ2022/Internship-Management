@@ -1,62 +1,3 @@
-<!--<div class="container">-->
-<!--  <div class="card col-md-6 offset-3">-->
-<!--    <div class="card-header bg-dark text-white text-center">-->
-<!--      Add Offre de Stage-->
-<!--    </div>-->
-<!--    <div class="card-body">-->
-<!--      <form [formGroup]="newOffreDeStageFormGroup" (ngSubmit)="addOffreDeStage()">-->
-<!--        <div class="mb-3">-->
-<!--          <div class="mb-3">-->
-<!--            <label class="form-label">Poste:</label>-->
-<!--            <input type="text" formControlName="poste" class="form-control">-->
-<!--            <span class="text-danger" *ngIf="newOffreDeStageFormGroup.controls['poste'].touched && newOffreDeStageFormGroup.controls['poste'].errors && newOffreDeStageFormGroup.controls['poste'].errors['required']">-->
-<!--              Poste is required-->
-<!--            </span>-->
-<!--          </div>-->
-<!--          <div class="mb-3">-->
-<!--            <label class="form-label">Entreprise:</label>-->
-<!--            <input type="text" formControlName="entreprise" class="form-control">-->
-<!--            <span class="text-danger" *ngIf="newOffreDeStageFormGroup.controls['entreprise'].touched && newOffreDeStageFormGroup.controls['entreprise'].errors && newOffreDeStageFormGroup.controls['entreprise'].errors['required']">-->
-<!--              Entreprise is required-->
-<!--            </span>-->
-<!--          </div>-->
-<!--          <div class="mb-3">-->
-<!--            <label class="form-label">Description:</label>-->
-<!--            <textarea formControlName="description" class="form-control"></textarea>-->
-<!--            <span class="text-danger" *ngIf="newOffreDeStageFormGroup.controls['description'].touched && newOffreDeStageFormGroup.controls['description'].errors && newOffreDeStageFormGroup.controls['description'].errors['required']">-->
-<!--              Description is required-->
-<!--            </span>-->
-<!--          </div>-->
-<!--          <div class="mb-3">-->
-<!--            <label class="form-label">Date Debut:</label>-->
-<!--            <input type="date" formControlName="dateDebut" class="form-control">-->
-<!--            <span class="text-danger" *ngIf="newOffreDeStageFormGroup.controls['dateDebut'].touched && newOffreDeStageFormGroup.controls['dateDebut'].errors && newOffreDeStageFormGroup.controls['dateDebut'].errors['required']">-->
-<!--              Date Debut is required-->
-<!--            </span>-->
-<!--          </div>-->
-<!--          <div class="mb-3">-->
-<!--            <label class="form-label">Date Fin:</label>-->
-<!--            <input type="date" formControlName="dateFin" class="form-control">-->
-<!--            <span class="text-danger" *ngIf="newOffreDeStageFormGroup.controls['dateFin'].touched && newOffreDeStageFormGroup.controls['dateFin'].errors && newOffreDeStageFormGroup.controls['dateFin'].errors['required']">-->
-<!--              Date Fin is required-->
-<!--            </span>-->
-<!--          </div>-->
-<!--          <div class="mb-3">-->
-<!--            <label class="form-label">Technologie:</label>-->
-<!--            <input type="text" formControlName="technologie" class="form-control">-->
-<!--            <span class="text-danger" *ngIf="newOffreDeStageFormGroup.controls['technologie'].touched && newOffreDeStageFormGroup.controls['technologie'].errors && newOffreDeStageFormGroup.controls['technologie'].errors['required']">-->
-<!--              Technologie is required-->
-<!--            </span>-->
-<!--          </div>-->
-<!--          <button [disabled]="!newOffreDeStageFormGroup.valid" class="btn btn-success mt-3">Save</button>-->
-<!--        </div>-->
-<!--      </form>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
-
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-auto bg-light sticky-top">
@@ -98,7 +39,7 @@
             </a>
           </li>
           <li *ngIf="roles!=null && roles.includes('ADMIN')">
-            <a routerLink="/offre-de-stage" class="nav-link py-3 px-3 text-bg-primary" style="color: grey;" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+            <a routerLink="/offre-de-stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
               <i class="bi-list-ul fs-3"></i>
             </a>
           </li>
@@ -118,8 +59,13 @@
             </a>
           </li>
           <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
-            <a routerLink="/add-stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+            <a routerLink="/add-stage" class="nav-link py-3 px-3 text-bg-primary" style="color: grey;" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
               <i class="bi-plus-square-fill fs-3"></i>
+            </a>
+          </li>
+          <li *ngIf="roles!=null && roles.includes('ENSEIGNANT')">
+            <a routerLink="/offre-de-stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-list-ul fs-3"></i>
             </a>
           </li>
 
@@ -145,11 +91,9 @@
                 <div class="card-body p-md-5">
                   <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-
                       <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Créer un stage</p>
                       <!--input controls -->
                       <form class="mx-1 mx-md-4" [formGroup]="newStageFormGroup" (ngSubmit)="addStage()">
-
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
@@ -158,16 +102,6 @@
                             <span class="text-danger" *ngIf="newStageFormGroup.controls['titre'].touched && newStageFormGroup.controls['titre'].errors && newStageFormGroup.controls['titre'].errors['required']">titre is required</span>
                           </div>
                         </div>
-
-<!--                        <div class="d-flex flex-row align-items-center mb-4">-->
-<!--                          <i class="fas fa-user fa-lg me-3 fa-fw"></i>-->
-<!--                          <div class="form-outline flex-fill mb-0">-->
-<!--                            <input type="text" class="form-control" name="last_name" formControlName="entreprise"/>-->
-<!--                            <label class="form-label">Entreprise</label>-->
-<!--                            <span class="text-danger" *ngIf="newStageFormGroup.controls['entreprise'].touched && newStageFormGroup.controls['entreprise'].errors && newStageFormGroup.controls['entreprise'].errors['required']">Entreprise is required</span>-->
-<!--                          </div>-->
-<!--                        </div>-->
-
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
@@ -176,7 +110,6 @@
                             <span class="text-danger" *ngIf="newStageFormGroup.controls['description'].touched && newStageFormGroup.controls['description'].errors && newStageFormGroup.controls['description'].errors['required']">Description is required</span>
                           </div>
                         </div>
-
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
@@ -185,7 +118,6 @@
                             <span class="text-danger" *ngIf="newStageFormGroup.controls['date_debut'].touched && newStageFormGroup.controls['date_debut'].errors && newStageFormGroup.controls['date_debut'].errors['required']">Date Debut is required</span>
                           </div>
                         </div>
-
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
@@ -194,7 +126,6 @@
                             <span class="text-danger" *ngIf="newStageFormGroup.controls['date_fin'].touched && newStageFormGroup.controls['date_fin'].errors && newStageFormGroup.controls['date_fin'].errors['required']">Date Fin is required</span>
                           </div>
                         </div>
-
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
@@ -203,18 +134,15 @@
                             <span class="text-danger" *ngIf="newStageFormGroup.controls['utite_d_accueil'].touched && newStageFormGroup.controls['utite_d_accueil'].errors && newStageFormGroup.controls['utite_d_accueil'].errors['required']">utite_d_accueil is required</span>
                           </div>
                         </div>
-
                         <!--buttons -->
-
                         <div class="d-flex justify-content-end pt-3 text-center">
-                          <button type="button" class="btn btn-light btn-lg" (click)="OnResetedForm()">Resetall</button>
+                          <button type="button" class="btn btn-light btn-lg" (click)="OnResetedForm()">Reset</button>
                           <button type="submit" [disabled]="!newStageFormGroup.valid" class="btn btn-warning btn-lg ms-3">Ajouter</button>
                         </div>
                       </form>
-                        </div>
+                    </div>
                     <div class="col-md-10 col-lg-6 col-xl-7 d-inline-block align-items-center order-1 order-lg-2">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                           class="img-fluid" alt="Sample image">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp" class="img-fluid" alt="Sample image">
                       <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
                       </div>
                     </div>
@@ -226,6 +154,5 @@
         </div>
       </section>
     </div>
-
   </div>
 </div>

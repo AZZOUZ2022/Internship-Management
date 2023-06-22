@@ -15,7 +15,7 @@ export class StageService {
   constructor(private http: HttpClient) {}
 
   createStage(stage: Stage): Observable<any> {
-    return this.http.post(`${this.backendHost}/stage`, stage);
+    return this.http.post(`${this.backendHost}/stages`, stage);
 
   }
 

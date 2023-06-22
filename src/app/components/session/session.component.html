@@ -63,6 +63,11 @@
               <i class="bi-plus-square-fill fs-3"></i>
             </a>
           </li>
+          <li *ngIf="roles!=null && roles.includes('ENSEIGNANT')">
+            <a routerLink="/offre-de-stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-list-ul fs-3"></i>
+            </a>
+          </li>
 
           <li class="nav-item dropdown" >
             <a class="nav-link dropdown-toggle bg-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -105,13 +110,22 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr class="students-list" *ngFor="let session of sessions; let i = index">
-                        <td class="text-center">{{i+1}}</td>
-                        <td class="text-center">{{ session.date }}</td>
-                        <td class="text-center">{{ session.description}}</td>
+                      <tr class="students-list">
+                        <td class="text-center">1</td>
+                        <td class="text-center">2023-06-16</td>
+                        <td class="text-center">Description</td>
                         <td class="text-center">
-                          <span id="boot-icon" class="bi bi-trash-fill" style="font-size: 1.2rem; color: rgb(255, 0, 0);" (click)="handleDeleteButton(session)"></span>
-                            &nbsp; &nbsp; <span id="boot-icon" class="bi bi-pencil-fill" style="font-size: 1.2rem; color: rgb(73, 219, 32);" (click)="goToUpdate(session)"></span>
+                          <span id="boot-icon" class="bi bi-trash-fill" style="font-size: 1.2rem; color: rgb(255, 0, 0);" ></span>
+                            &nbsp; &nbsp; <span id="boot-icon" class="bi bi-pencil-fill" style="font-size: 1.2rem; color: rgb(73, 219, 32);"></span>
+                        </td>
+                      </tr>
+                      <tr class="students-list">
+                        <td class="text-center">2</td>
+                        <td class="text-center">2023-04-21</td>
+                        <td class="text-center">Description</td>
+                        <td class="text-center">
+                          <span id="boot-icon" class="bi bi-trash-fill" style="font-size: 1.2rem; color: rgb(255, 0, 0);" ></span>
+                          &nbsp; &nbsp; <span id="boot-icon" class="bi bi-pencil-fill" style="font-size: 1.2rem; color: rgb(73, 219, 32);"></span>
                         </td>
                       </tr>
                       </tbody>

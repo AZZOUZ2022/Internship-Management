@@ -3,14 +3,14 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import Swal from 'sweetalert2';
 import { AuthService } from '../../../services/auth.service';
-import {StageService} from "../../../services/stageservice/stage.service";
-import {Stage} from "../../../model/stage";
+import { StageService } from "../../../services/stageservice/stage.service";
+import { Stage } from "../../../model/stage";
 
 @Component({
   selector: 'app-add-stage',
   templateUrl: './add-stage.component.html'
 })
-export class AddStage implements OnInit {
+export class AddStageComponent implements OnInit {
 
   newStageFormGroup!: FormGroup;
   roles!: string | null;
@@ -21,7 +21,7 @@ export class AddStage implements OnInit {
 
   ngOnInit(): void {
     this.roles = localStorage.getItem("ROLES");
-    if (localStorage.getItem("id") != undefined) {
+    if (localStorage.getItem("id") !== undefined) {
       this.customerId = localStorage.getItem("id");
     }
     this.newStageFormGroup = this.fb.group({
@@ -58,7 +58,7 @@ export class AddStage implements OnInit {
   }
 
   OnResetedForm(){
-    this.newStageFormGroup.reset()
+    this.newStageFormGroup.reset();
   }
 
   handleLogout() {
@@ -66,6 +66,4 @@ export class AddStage implements OnInit {
     this.roles = null;
     this.router.navigateByUrl("/login");
   }
-
-
 }

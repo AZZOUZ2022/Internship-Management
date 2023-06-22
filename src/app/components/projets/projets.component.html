@@ -58,9 +58,9 @@
               <i class="bi-file-text-fill fs-3"></i>
             </a>
           </li>
-          <li *ngIf="roles!=null && roles.includes('ETUDIANT')">
-            <a routerLink="/stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
-              <i class="bi-plus-square-fill fs-3"></i>
+          <li *ngIf="roles!=null && roles.includes('ENSEIGNANT')">
+            <a routerLink="/offre-de-stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+              <i class="bi-list-ul fs-3"></i>
             </a>
           </li>
 
@@ -123,26 +123,22 @@
                     <th class="text-center"><b>Intitule</b></th>
                     <th class="text-center"><b>Description</b></th>
                     <th class="text-center"><b>Lien GitHub</b></th>
+                    <th class="text-center"><b>Actions</b></th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr class="students-list" *ngFor="let o of projetObservable | async"> <!-- async : [M2] subscribe-->
-                    <td *ngFor="let i = index" class="text-center">{{i+1}}</td>
-                    <td class="text-center"> {{o.intitule}}</td>
-                    <td class="text-center"> {{o.description}}</td>
-                    <td class="text-center"> {{o.path}}</td>
-                    <!--            <td> {{o.stageDTO}}</td>-->
-                    <!-- Edit -->
-                    <td>
-                      <button (click)="Edit(o)" class="btn btn-info">
-                        <i class="bi bi-pencil"> Edit</i>
-                      </button>
-                    </td>
-                    <!-- Delete -->
-                    <td>
-                      <button (click)="Delete(o)" class="btn btn-danger">
-                        <i class="bi bi-trash"> Delete</i>
-                      </button>
+                  <tr class="students-list" *ngFor="let p of projet; let i = index"> <!-- async : [M2] subscribe-->
+                    <td class="text-center">{{i+1}}</td>
+                    <td class="text-center"> {{p.intitule}}</td>
+                    <td class="text-center"> {{p.description}}</td>
+                    <td class="text-center"> {{p.path}}</td>
+                    <td class="text-center">
+                      <ul class="list-unstyled mb-0 d-flex justify-content-end">
+                        &nbsp;<li><span id="boot-icon" class="bi bi-pencil-fill"
+                                        style="font-size: 1.2rem; color: rgb(73, 219, 32);" (click)="Edit(p)"></span></li>
+                        &nbsp;&nbsp;&nbsp;<li><span id="boot-icon" class="bi bi-trash-fill"
+                                        style="font-size: 1.2rem; color: rgb(255, 0, 0);" (click)="Delete(p)"></span></li>
+                      </ul>
                     </td>
                   </tr>
                   </tbody>

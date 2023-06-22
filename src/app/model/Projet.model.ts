@@ -4,4 +4,5 @@ export interface Projet {
   description: string
   path: string
   stageDTO: any
+  username: string
 }

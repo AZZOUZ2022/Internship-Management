@@ -63,6 +63,11 @@
                     <i class="bi-plus-square-fill fs-3"></i>
                   </a>
                 </li>
+                <li *ngIf="roles!=null && roles.includes('ENSEIGNANT')">
+                  <a routerLink="/offre-de-stage" class="nav-link py-3 px-3 bg-light" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                    <i class="bi-list-ul fs-3"></i>
+                  </a>
+                </li>
                   <li class="nav-item dropdown" >
                     <a class="nav-link dropdown-toggle bg-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="bi-people fs-3"></i>

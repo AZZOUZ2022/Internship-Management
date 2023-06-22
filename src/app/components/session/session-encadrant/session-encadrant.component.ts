@@ -3,6 +3,8 @@ import {AuthService} from "../../../services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EncadrantEtudiantService} from "../../../services/encadrant_etudiant/encadrant-etudiant.service";
 import {SessionService} from "../../../services/session/session.service";
+import {OffreDeStage} from "../../../model/OffreDeStage";
+import {Session} from "../../../model/session";
 
 @Component({
   selector: 'app-session-encadrant',
@@ -12,6 +14,7 @@ import {SessionService} from "../../../services/session/session.service";
 export class SessionEncadrantComponent {
   roles!: string | null;
   customerId: any;
+  session: Session[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +31,18 @@ export class SessionEncadrantComponent {
     if (localStorage.getItem("id") != undefined) {
       this.customerId = localStorage.getItem("id");
     }
+    this.getSessions();
+  }
+
+  getSessions(): void {
+    this.sessionService.getSessions().subscribe(
+      session => {
+        this.session = session;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   handleLogout() {

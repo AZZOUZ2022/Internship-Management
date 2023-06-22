@@ -23,9 +23,9 @@ export class NewProjetComponent implements OnInit {
     }
     this.newProjetFormGroup = this.fb.group({
       intitule: this.fb.control("",[Validators.required,Validators.minLength(4)]),
-      description: this.fb.control(""),
-      path: this.fb.control(""),
-      stage: this.fb.control(null)
+      description: [null, Validators.required],
+      path: [null, Validators.required],
+      stage: [null, Validators.required],
     });
   }
 
@@ -33,7 +33,7 @@ export class NewProjetComponent implements OnInit {
       let projet: Projet = this.newProjetFormGroup.value;
       this.projetsService.saveProjet(projet).subscribe({
         next : data => {
-          alert("Projet has been successfully saved !!")
+          alert("stage has been successfully saved !!")
           this.newProjetFormGroup.reset()
           this.router.navigateByUrl("/projets")
         }, error : err => {

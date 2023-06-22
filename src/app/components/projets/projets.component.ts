@@ -19,7 +19,7 @@ export class ProjetsComponent implements OnInit {
   observable!: Observable<Array<Projet>>;
   roles!: string | null;
   customerId: any;
-  offresDeStage: OffreDeStage[] = [];
+  projet: Projet[] = [];
 
   searchFormGroup!: FormGroup;
 
@@ -36,7 +36,7 @@ export class ProjetsComponent implements OnInit {
       keyword: this.formBuilder.control("")
     });
     this.getProjets();
-
+    console.log(this.getLoggedUser());
   }
 
   handleSearchOffresStageByPoste() {
@@ -50,11 +50,20 @@ export class ProjetsComponent implements OnInit {
   }
 
   private getProjets() {
-    this.projetObservable = this.projetsService.getProjets().pipe(
-      catchError(err => {
-        this.errorMsg = err.message;
-        return throwError(err)
-      })
+    // this.projetObservable = this.projetsService.getProjets().pipe(
+    //   catchError(err => {
+    //     this.errorMsg = err.message;
+    //     return throwError(err)
+    //   })
+    // );
+    this.projetsService.getProjets().subscribe(
+      projet => {
+        this.projet = projet;
+        console.log(projet[0].username)
+      },
+      error => {
+        console.log(error);
+      }
     );
   }
 
@@ -98,5 +107,7 @@ export class ProjetsComponent implements OnInit {
     this.router.navigateByUrl("/login");
   }
 
-
+  getLoggedUser() {
+    return this.auth.getLogin();
+  }
 }

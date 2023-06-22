@@ -17,7 +17,7 @@ export class AuthService {
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
   private readonly ROLES = 'ROLES';
-  private loggedUser!: string;
+  public loggedUser!: string;
   constructor(private http: HttpClient, private router:Router) {}
   login(user: { username: string, password: string }): Observable<boolean> {
     return this.http.post<any>(environment.apiUrl+'/login', user)
@@ -54,6 +54,9 @@ export class AuthService {
   private doLoginUser(username: string, tokens: Tokens) {
     this.loggedUser = username;
     this.storeTokens(tokens);
+  }
+  public getLogin() {
+    return this.loggedUser;
   }
   private doLogoutUser() {
     this.loggedUser = 'null';

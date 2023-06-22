@@ -20,7 +20,7 @@ import { DetailsOffreComponent } from "./components/offre-de-stage/details-offre
 import { ChartComponent } from './components/stage/chart/chart.component';
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { ProfileComponent } from './components/profile/profile.component'
-import { AddStage } from "./components/stage/add-stage/add-stage.component";
+import { AddStageComponent } from "./components/stage/add-stage/add-stage.component";
 import { EditEtudiantComponent } from "./components/etudiant/edit/edit-etudiant.component";
 import { NewProjetComponent } from "./components/projets/add/new-projet.component";
 import { EditProjetComponent } from "./components/projets/edit/edit-projet.component";
@@ -58,7 +58,7 @@ const routes: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: 'session/:id', component: SessionComponent },
   { path: "profile", component: ProfileComponent },
-  { path: "add-stage", component: AddStage },
+  { path: "add-stage", component: AddStageComponent },
   { path: "session-encadrant", component: SessionEncadrantComponent },
   { path: "pc", component: PieChartComponent },
 ];
